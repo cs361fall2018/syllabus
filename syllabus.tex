@@ -1,0 +1,226 @@
+\documentclass[11pt, a4paper]{article}
+%\usepackage{geometry}
+\usepackage[inner=1.5cm,outer=1.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\pagestyle{empty}
+\usepackage{graphicx}
+\usepackage{fancyhdr, lastpage, bbding, pmboxdraw}
+\usepackage[usenames,dvipsnames]{color}
+\definecolor{darkblue}{rgb}{0,0,.6}
+\definecolor{darkred}{rgb}{.7,0,0}
+\definecolor{darkgreen}{rgb}{0,.6,0}
+\definecolor{red}{rgb}{.98,0,0}
+\usepackage[colorlinks,pagebackref,pdfusetitle,urlcolor=darkblue,citecolor=darkblue,linkcolor=darkred,bookmarksnumbered,plainpages=false]{hyperref}
+\usepackage{enumitem}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+\setlist{nolistsep}
+
+\pagestyle{fancyplain}
+\fancyhf{}
+\lhead{ \fancyplain{}{Course Name} }
+%\chead{ \fancyplain{}{} }
+\rhead{ \fancyplain{}{\today} }
+%\rfoot{\fancyplain{}{page \thepage\ of \pageref{LastPage}}}
+\fancyfoot[RO, LE] {page \thepage\ of \pageref{LastPage} }
+\thispagestyle{plain}
+
+%%%%%%%%%%%% LISTING %%%
+\usepackage{listings}
+\usepackage{caption}
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
+\usepackage{verbatim} % used to display code
+\usepackage{fancyvrb}
+\usepackage{acronym}
+\usepackage{amsthm}
+\VerbatimFootnotes % Required, otherwise verbatim does not work in footnotes!
+
+
+
+\definecolor{OliveGreen}{cmyk}{0.64,0,0.95,0.40}
+\definecolor{CadetBlue}{cmyk}{0.62,0.57,0.23,0}
+\definecolor{lightlightgray}{gray}{0.93}
+
+
+
+\lstset{
+%language=bash,                          % Code langugage
+basicstyle=\ttfamily,                   % Code font, Examples: \footnotesize, \ttfamily
+keywordstyle=\color{OliveGreen},        % Keywords font ('*' = uppercase)
+commentstyle=\color{gray},              % Comments font
+numbers=left,                           % Line nums position
+numberstyle=\tiny,                      % Line-numbers fonts
+stepnumber=1,                           % Step between two line-numbers
+numbersep=5pt,                          % How far are line-numbers from code
+backgroundcolor=\color{lightlightgray}, % Choose background color
+frame=none,                             % A frame around the code
+tabsize=2,                              % Default tab size
+captionpos=t,                           % Caption-position = bottom
+breaklines=true,                        % Automatic line breaking?
+breakatwhitespace=false,                % Automatic breaks only at whitespace?
+showspaces=false,                       % Dont make spaces visible
+showtabs=false,                         % Dont make tabls visible
+columns=flexible,                       % Column format
+morekeywords={__global__, __device__},  % CUDA specific keywords
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\begin{center}
+{\Large \textsc{Software Engineering}}
+\end{center}
+\begin{center}
+Fall 2018
+\end{center}
+%\date{September 26, 2014}
+
+\begin{center}
+\rule{6in}{0.4pt}
+\begin{minipage}[t]{.8\textwidth}
+\begin{tabular}{llccll}
+\textbf{Instructor:} &Caius Brindescu & & & \textbf{Time:} & T \& R 4:00 PM -- 5:20 PM \\
+\textbf{Email:} &  \href{mailto:brindesc@oregonstate.edu}{brindesc@oregonstate.edu} & & & \textbf{Place:} & LINC 200\\
+\textbf{Office Hours:} & R 3-4 PM, Kelley Atrium &&&&\\
+\textbf{TAs:} & Ke-Jo Hsieh & & & &  \\
+ & hsiehke@oregonstate.edu & & & &  \\
+ & T 3-4 PM, Kelley Atrium &&&&\\
+ & Alexandria LeClerc &&&&  \\
+ & leclerca@oregonstate.edu &&&&  \\
+ & TBA, Kelley Atrium &&&&\\
+ & Manideepa Saginatham &&&&  \\
+ & saginatm@oregonstate.edu &&&&  \\
+ & TBA, Kelley Atrium &&&&\\
+
+\end{tabular}
+\end{minipage}
+\rule{6in}{0.4pt}
+\end{center}
+\vspace{.5cm}
+\setlength{\unitlength}{1in}
+
+\noindent\textbf{Goal:} The main goal of this class will be help students develop the skills that will enable them to build high quality software, in a professional manner.  This includes writing code that is reliable, well designed, meets the requirements, is well designed, and can be done in a reasonable amount of time.  We will also discuss important skills necessary for working with others while developing software including version control, peer reviews, issue tracking, and testing.
+
+\noindent\textbf{Topics Covered:} Introduction to Software Engineering, Software Development Processes, Requirements Elicitation, Software Design and Architecture, Configuration Management and Project Management, Software Specifications and Testing, Ethics in Software Development.
+
+\noindent\textbf{Class expectations:}
+\begin{itemize}[noitemsep]
+\item There will be two 120 minute classes per week. In addition, you should expect to spend 8 additional hours per week on reading, study, and projects.
+\item We will use Slack to discuss questions/problems. Email only when you have personal or grade related questions. If you email questions about the assignments, we will not answer them. Use this signup link: \url{https://bit.ly/2DfTFxl}.
+\item You are expected to regularly check your email and the Slack \texttt{\#announcements} channel so not to miss important announcements.
+\item You are expected to be prepared for class, participate in discussions, ask and answer questions.
+\item We will cover some material in class that is not covered in the text; your assignments and test questions may be based on that material. In particular, many of the details necessary to complete assignments will be presented in class. Thus, it is to your benefit to attend class. Because late arrivals are distracting, we also ask that you arrive to class on time.
+\end{itemize}
+
+\vskip.05in
+\noindent\textbf{Textbook:} %\footnotemark
+There are no required textbooks for this class.  Online readings will be posted before each class.
+
+\vskip.05in
+\noindent\textbf{Class Website:} %\footnotemark
+
+\noindent All the information you need for our class will be on our website: \url{https://cs361fall2018.github.io/}\\ 
+
+\vskip.05in
+\noindent\textbf{Late Assignment Policy:} %\footnotemark
+Each group will be allowed 2 late days on the Project assignments only. 
+These days can be used separately or in a single block. 
+All group members must agree to use the late days and notify the professor/TAs \emph{prior} to the original due date. 
+The late days are atomic (you cannot split them further).
+In all other cases, late assignments will not be accepted.
+
+\vskip.05in
+\noindent\textbf{Grading:}
+\begin{center} \begin{minipage}{3.8in}
+\begin{flushleft}
+Class Participation (10\%)\\
+Project 60\%)\\ 
+Final (30\%)\\ %Four Projects (40\% = 4 * 10\%)
+\end{flushleft}
+\end{minipage}
+\end{center}
+
+\vskip.05in
+\noindent\textbf{Final Letter Grading Scheme:}
+The final letter grades will be assigned using the scheme below:
+
+\begin{center}
+\renewcommand{\arraystretch}{1} 
+\begin{tabular}{ccc}
+ & A: 100-93\% & A-: 90-12\% \\	
+B+: 87-89\% & B: 83-86\% & B-: 80-82\% \\
+C+: 77-79\% & C: 73-76\% & C-: 70-72\% \\
+D+: 67-69\% & D: 63-66\% & D-: 60-62\% \\
+& F: 0-59\% & \\ 
+\end{tabular}
+\end{center}
+
+\vskip.05in
+\noindent\textbf{Gadget Policy:} %\footnotemark
+No cell phones, iPods, or similar mobile device usage is allowed in class. You may use laptops to take notes, but will have additional responsibilities to participate in class discussions. Failure to follow this policy will result in penalties.
+
+
+\vskip.05in
+\noindent\textbf{Establishing a positive community:} %\footnotemark
+Every student should feel safe and welcome to contribute in this course. As the instructor, I will try to establish this tone whenever possible, but ultimately the responsibility for cultivating a safe and welcoming community belongs to the students — that means you! This page talks more about this very important part of our education process \url{https://cs361fall2018.github.io/positive-community}.
+
+\vskip.05in
+\noindent\textbf{Academic Honesty:}  
+In this class you must abide by OSU's Student Conduct Code.
+Reuse and building upon ideas or code are major parts of modern software development. As a professional programmer you will never write anything from scratch. In principle, we won't hunt down people who are simply copying-and-pasting solutions, because without challenging themselves, they are simply wasting their time and money taking this class. However, gross violations will be reported to the department and the Office of Student Conduct, and my result in an F grade for the class. Please respect the terms of use and/or license of any code you find, and if you re-implement or duplicate an algorithm or code from elsewhere, credit the original source with an inline comment.
+
+\vskip.05in
+\noindent\textbf{Students with Disabilities:} Accommodations are collaborative efforts between students, faculty and Disability Access Services (DAS). Students with accommodations approved through DAS are responsible for contacting the faculty member in charge of the course prior to or during the first week of the term to discuss accommodations. Students who believe they are eligible for accommodations but who have not yet obtained approval through DAS should contact DAS immediately at (541) 737-4098. Students with documented disabilities who may need accommodations, who have any emergency medical information the instructor should be aware of, or who need special arrangements in the event of evacuation, should make an appointment with the instructor as early as possible, and no later than the first week of the term.
+
+\vskip.05in
+\noindent\textbf{Course Objectives:} \begin{itemize}[noitemsep]
+\item{Select the most appropriate software process model to use in a particular situation}
+\item{Synthesize requirements for a realistic software system and write a requirements specification document}
+\item{Model system requirements using one or more semi-formal notations such as UML, dataflow diagrams, entity-relationship diagrams, or state diagrams}
+\item{Design software systems at an architectural level and at lower levels, using one or more techniques, such as object-oriented design or agile methods, and express these designs in design specification documents}
+\item{Validate designs and adjust the specification or design as necessary}
+\item{Describe several methods of estimating the cost and developing a schedule for a programming project}
+\item{Participate effectively in a team environment}
+\item{Produce professional-quality software-related documents}
+\item{Develop and articulate content knowledge and critical thinking in the discipline through frequent practice of informal and formal writing.}
+\item{Demonstrate knowledge/understanding of audience expectations, genres, and conventions appropriate to communicating in the discipline.}
+\item{Demonstrate the ability to compose a document of at least 2000 words through multiple aspects of writing, including brainstorming, drafting, using sources appropriately, and revising comprehensively after receiving feedback on a draft.}
+\end{itemize}
+
+
+\newpage
+
+\vskip.05in
+\noindent\textbf{The Last Page:} 
+
+This page is so I can gather a little information about you at the beginning of the class. Please fill it out, tear it off and leave it with me on the way out.\\
+
+\noindent\textbf{Who are you?} \\
+\\
+\\
+Name: $\rule{10cm}{0.15mm}$ \\
+\\
+\\
+Email: $\rule{10cm}{0.15mm}$ \\
+\\
+
+\noindent\textbf{Experience?} \\
+\\
+\\
+How much experience do you have with Java?: $\rule{10cm}{0.15mm}$ \\
+\\
+\\
+How much experience do you have working in a team?: $\rule{10cm}{0.15mm}$ \\
+\\
+
+\noindent\textbf{Class Expectations?} \\   
+
+  Please take a minute to write out what your goals and expectations are for CS 361. 
+What do you want to learn? What do you expect to learn? Are these the same thing?
+
+
+
+
+
+%%%%%% THE END 
+\end{document} 
